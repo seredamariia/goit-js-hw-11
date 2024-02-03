@@ -4,6 +4,11 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 const loader = document.querySelector('.loader');
 
+let gallery = new SimpleLightbox('.gallery-item a', {
+  captionDelay: 250,
+  captionsData: 'alt',
+});
+
 const cardContainer = document.querySelector('.gallery');
 const searchForm = document.querySelector('.search-form');
 
@@ -30,10 +35,6 @@ searchForm.addEventListener('submit', event => {
         handleNoImages();
       } else {
         cardContainer.innerHTML = generateGallery(data.hits);
-        let gallery = new SimpleLightbox('.gallery-item a', {
-          captionDelay: 250,
-          captionsData: 'alt',
-        });
         gallery.refresh();
       }
     })
